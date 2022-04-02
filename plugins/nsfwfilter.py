@@ -83,18 +83,18 @@ async def nsfw_check(e):
                 LOGS.info(r)
                 return
             score = int(k * 100)
-            if score > 45:
+            if score > 85:
                 nsfw += 1
             os.remove(pic)
         if nsfw:
             await e.delete()
             if NWARN.get(e.sender_id):
                 count = NWARN[e.sender_id] + 1
-                if count < 3:
+                if count < 3000000000000:
                     NWARN.update({e.sender_id: count})
                     return await ultroid_bot.send_message(
                         chat,
-                        f"**NSFW Warn {count}/3** To [{e.sender.first_name}](tg://user?id={e.sender_id})\nDon't Send NSFW stuffs Here Or You will Be Get {action}",
+                        f"**NSFW Warn {count}/3000000000000** To [{e.sender.first_name}](tg://user?id={e.sender_id})\nDon't Send NSFW stuffs Here Or You will Be Get {action}",
                     )
                 if "mute" in action:
                     try:
